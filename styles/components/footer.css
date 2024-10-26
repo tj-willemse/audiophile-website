@@ -1,0 +1,130 @@
+.footer {
+  background-color: var(--clr-blackest);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 10px;
+}
+.footer-logo {
+  width: 143px;
+}
+
+.footer-img-nav-box {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+.footer-navigation-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  gap: 1rem;
+}
+.footer-nav-text {
+  color: var(--clr-white);
+  text-transform: uppercase;
+  font-size: var(--size-sm);
+  letter-spacing: 1px;
+}
+.footer-paragraph {
+  color: var(--clr-light-gray);
+  text-align: center;
+  font-size: var(--size-xs);
+  letter-spacing: 1px;
+  max-width: 45ch;
+  margin: auto;
+}
+.footer-copyright {
+  color: var(--clr-light-gray);
+  text-align: center;
+  font-size: var(--size-xs);
+  letter-spacing: 1px;
+}
+.footer-socials-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 40px;
+}
+.footer-copy-social-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* Sm */
+@media (min-width: 640px) {
+  .footer-navigation-box {
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .footer-img-nav-box {
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .footer-paragraph {
+    text-align: start;
+    font-size: var(--size-xs);
+    max-width: 90ch;
+    margin: 0;
+  }
+
+  .footer-copyright {
+    color: var(--clr-light-gray);
+    text-align: start;
+    font-size: var(--size-xs);
+    letter-spacing: 1px;
+  }
+
+  .footer-copy-social-box {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+  }
+
+  .footer-socials-box {
+    align-items: start;
+    margin-bottom: 40px;
+  }
+  .footer {
+    padding: 40px;
+  }
+}
+
+/* md */
+/* @media (min-width: 768px) {}  */
+
+/* Lg */
+@media (min-width: 1024px) {
+  .footer-img-nav-box {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .footer-paragraph {
+    max-width: 70ch;
+  }
+
+  .footer-navigation-box {
+    gap: 1rem;
+  }
+  .footer {
+    padding: 60px;
+  }
+}
+
+/* xL */
+@media (min-width: 1280px) {
+  .footer-navigation-box {
+    gap: 2rem;
+  }
+}
+
+/* 2xL */
+/* @media (min-width: 1536px) {} */
