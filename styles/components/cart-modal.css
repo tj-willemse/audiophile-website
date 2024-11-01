@@ -1,0 +1,131 @@
+.cart-modal {
+  display: none;
+  width: 100%;
+  background-color: var(--clr-white);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 20%;
+  z-index: --1;
+}
+.cart-main-modal-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-header,
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.cart-item-quantity button {
+  background: #eaeaea;
+  border: none;
+  padding: 4px 8px;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+.cart-button-box {
+  display: flex;
+  justify-content: center;
+}
+
+.button-cart {
+  background-color: var(--clr-dark-human);
+  color: var(--clr-white);
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: var(--size-sm);
+  letter-spacing: 1px;
+  font-weight: 400;
+  width: 150px;
+  margin: auto;
+}
+
+.cart-total {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-footer {
+  font-weight: bold;
+}
+
+.cart-title-price {
+  display: flex;
+  flex-direction: column;
+}
+.cart-img {
+  border-radius: 10px;
+  width: 25%;
+}
+
+.main-cart-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-title {
+  font-size: var(--size-base);
+  font-weight: bold;
+}
+.cart-price {
+  font-size: var(--size-xs);
+}
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* Sm */
+@media (min-width: 640px) {
+  .cart-modal {
+    width: 60%;
+    left: 40%;
+  }
+}
+
+/* md */
+/* @media (min-width: 768px) {}  */
+
+/* Lg */
+/* @media (min-width: 1024px) {
+  
+} */
+
+/* xL */
+@media (min-width: 1280px) {
+  .cart-modal {
+    width: 30%;
+    left: 70%;
+  }
+}
+
+/* 2xL */
+@media (min-width: 1536px) {
+  .cart-modal {
+    width: 20%;
+  }
+}

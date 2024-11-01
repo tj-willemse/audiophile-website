@@ -27,6 +27,16 @@
   text-transform: uppercase;
   font-size: var(--size-sm);
   letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.footer-nav-text:hover {
+  color: var(--clr-dark-human);
+}
+
+.footer-nav-text-two {
+  text-decoration: none;
 }
 .footer-paragraph {
   color: var(--clr-light-gray);

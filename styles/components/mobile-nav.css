@@ -1,0 +1,64 @@
+/* Hide mobile menu overlay initially */
+.mobile-menu-overlay {
+  display: none;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-white);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Display overlay as a flex container for centered alignment */
+.product-type-box-main-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 20px;
+}
+
+.product-type-sub-boxes-mobile {
+  text-align: center;
+}
+
+.product-type-shop-button-mobile a {
+  color: var(--clr-white); /* Ensure link text color stands out */
+  text-decoration: none;
+}
+
+.hamburger-icon {
+  cursor: pointer;
+}
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* Sm */
+@media (min-width: 640px) {
+  .product-type-box-main-mobile {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .mobile-menu-overlay {
+    padding-top: 100px;
+    height: 100px;
+  }
+}
+
+/* md */
+/* @media (min-width: 768px) {}  */
+
+/* Lg */
+/* @media (min-width: 1024px) {} */
+
+/* xL */
+/* @media (min-width: 1280px) {}  */
+
+/* 2xL */
+/* @media (min-width: 1536px) {} */

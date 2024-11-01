@@ -3,6 +3,44 @@
   background-color: black;
 }
 
+.hamburger {
+  cursor: pointer;
+}
+
+.hamburger input {
+  display: none;
+}
+
+.hamburger svg {
+  height: 2em;
+
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+  fill: none;
+  stroke: var(--clr-dark-human);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
 .header-main-box {
   display: flex;
   align-items: center;
@@ -13,21 +51,98 @@
 .hamburger-logo {
   display: flex;
   align-items: center;
-  gap: 2.4rem;
+  gap: 1.5rem;
+}
+/* From Uiverse.io by vinodjangid07 */
+.cartBtn {
+  border: none;
+  width: 50px;
+  height: 50px;
+
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: white;
+  font-weight: 500;
+  position: relative;
+  background-color: none;
+  box-shadow: 0 20px 30px -7px rgba(27, 27, 27, 0.219);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.cart {
+  z-index: 2;
+}
+
+.cartBtn:active {
+  transform: scale(0.96);
+}
+
+.product {
+  position: absolute;
+  width: 12px;
+  border-radius: 3px;
+  content: '';
+  left: 20px;
+  bottom: 23px;
+  opacity: 0;
+  z-index: 1;
+  fill: rgb(211, 211, 211);
+}
+
+.cartBtn:hover .product {
+  animation: slide-in-top 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-30px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0) rotate(-90deg);
+    opacity: 1;
+  }
+}
+
+.cartBtn:hover .cart {
+  animation: slide-in-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .header-navigation {
   display: none;
 }
 .header-nav-text {
-  color: var(--clr-white);
   text-transform: uppercase;
   font-size: var(--size-sm);
   letter-spacing: 1px;
 }
-.header-nav-text:hover {
+
+.header-nav-text a {
+  text-decoration: none;
+  color: var(--clr-white);
+}
+.header-nav-text a:hover {
   color: var(--clr-dark-human);
 }
+
 .header-navigation-box {
   list-style: none;
   display: flex;
@@ -57,7 +172,7 @@
 
 /* Lg */
 @media (min-width: 1024px) {
-  .hamburger-icon {
+  .hamburger {
     display: none;
   }
 

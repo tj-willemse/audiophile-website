@@ -27,18 +27,28 @@
   width: 150px;
   margin: auto;
 }
+.button1 a {
+  color: var(--clr-blackest);
+  text-decoration: none;
+}
 
 .button1:hover {
   background-color: var(--clr-light-human);
 }
 .button2 {
-  background-color: var(--clr-white);
-  color: var(--clr-blackest);
+  background-color: none;
+
   border: 1px solid var(--clr-blackest);
   padding: 10px;
   text-transform: uppercase;
   font-size: var(--size-sm);
   font-weight: bold;
+  width: 150px;
+}
+
+.button2 a {
+  text-decoration: none;
+  color: var(--clr-blackest);
 }
 
 .button2:hover {
@@ -46,7 +56,6 @@
   color: var(--clr-white);
 }
 .button3 {
-  background-color: var(--clr-white);
   color: #9ca3af;
   border: none;
   padding: 10px;
@@ -54,8 +63,11 @@
   font-size: var(--size-sm);
   font-weight: bold;
 }
+.button3 a {
+  background-color: var(--clr-white);
+}
 
-.button3:hover {
+.button3 a:hover {
   color: var(--clr-dark-human);
 }
 

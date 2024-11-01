@@ -3,39 +3,255 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+    rel="stylesheet"
+  />
     <title>Audiophile e-commerce website</title>
   </head>
 
   <body>
-    Home Headphones Speakers Earphones Go back ZX7 Speaker Stream high quality
-    sound wirelessly with minimal to no loss. The ZX7 speaker uses high-end
-    audiophile components that represents the top of the line powered speakers
-    for home or studio use. $3,500 1 Add to cart Features Reap the advantages of
-    a flat diaphragm tweeter cone. This provides a fast response rate and
-    excellent high frequencies that lower tiered bookshelf speakers cannot
-    provide. The woofers are made from aluminum that produces a unique and clear
-    sound. XLR inputs allow you to connect to a mixer for more advanced usage.
-    The ZX7 speaker is the perfect blend of stylish design and high performance.
-    It houses an encased MDF wooden enclosure which minimises acoustic
-    resonance. Dual connectivity allows pairing through bluetooth or traditional
-    optical and RCA input. Switch input sources and control volume at your
-    finger tips with the included wireless remote. This versatile speaker is
-    equipped to deliver an authentic listening experience. In the box 2x Speaker
-    unit 2x Speaker cloth panel 1x User manual 1x 3.5mm 7.5m audio cable 1x 7.5m
-    optical cable You may also like ZX9 Speaker See product XX99 Mark I See
-    product XX59 See product Headphones Shop Speakers Shop Earphones Shop
-    Bringing you the best audio gear Located at the heart of New York City,
-    Audiophile is the premier store for high end headphones, earphones,
-    speakers, and audio accessories. We have a large showroom and luxury
-    demonstration rooms available for you to browse and experience a wide range
-    of our products. Stop by our store to meet some of the fantastic people who
-    make Audiophile the best place to buy your portable audio equipment. Home
-    Headphones Speakers Earphones Audiophile is an all in one stop to fulfill
-    your audio needs. We're a small team of music lovers and sound specialists
-    who are devoted to helping you get the most out of personal audio. Come and
-    visit our demo facility - we’re open 7 days a week. Copyright 2021. All
-    Rights Reserved
+    <header class="header container">
+      <div class="header-main-box">
+        <div class="hamburger-logo">
+          <label class="hamburger">
+            <input type="checkbox" />
+            <svg viewBox="0 0 32 32">
+              <path
+                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+                class="line line-top-bottom"
+              ></path>
+              <path d="M7 16 27 16" class="line"></path>
+            </svg>
+          </label>
+          <a href="/index.html">
+            <img src="/public/shared/desktop/logo.svg" alt="" />
+          </a>
+        </div>
+
+        <nav class="header-navigation">
+          <ul class="header-navigation-box">
+            <li class="header-nav-text"><a href="/index.html">Home</a></li>
+            <li class="header-nav-text">
+              <a href="/headphones.html">Headphones</a>
+            </li>
+            <li class="header-nav-text">
+              <a href="/speakers.html"> Speakers</a>
+            </li>
+            <li class="header-nav-text">
+              <a href="/earphones.html"> Earphones</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="cartBtn">
+          <svg
+            id="cart-icon"
+            class="cart"
+            fill="white"
+            viewBox="0 0 576 512"
+            height="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+            ></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="1em"
+            viewBox="0 0 640 512"
+            class="product"
+          >
+            <path
+              d="M211.8 0c7.8 0 14.3 5.7 16.7 13.2C240.8 51.9 277.1 80 320 80s79.2-28.1 91.5-66.8C413.9 5.7 420.4 0 428.2 0h12.6c22.5 0 44.2 7.9 61.5 22.3L628.5 127.4c6.6 5.5 10.7 13.5 11.4 22.1s-2.1 17.1-7.8 23.6l-56 64c-11.4 13.1-31.2 14.6-44.6 3.5L480 197.7V448c0 35.3-28.7 64-64 64H224c-35.3 0-64-28.7-64-64V197.7l-51.5 42.9c-13.3 11.1-33.1 9.6-44.6-3.5l-56-64c-5.7-6.5-8.5-15-7.8-23.6s4.8-16.6 11.4-22.1L137.7 22.3C155 7.9 176.7 0 199.2 0h12.6z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="mobile-menu-overlay">
+        <div class="product-type-box-main-mobile">
+          <div class="product-type-sub-boxes">
+            <img
+              class="product-type-img"
+              src="./public/shared/desktop/image-category-thumbnail-headphones.png"
+              alt=""
+            />
+            <h3 class="product-type-title">Headphones</h3>
+            <button class="product-type-shop-button">
+              <a href="/headphones.html"> Shop</a>
+
+              <img src="./public/shared/desktop/icon-arrow-right.svg" alt="" />
+            </button>
+          </div>
+
+          <div class="product-type-sub-boxes">
+            <img
+              class="product-type-img"
+              src="./public/shared/desktop/image-category-thumbnail-speakers.png"
+              alt=""
+            />
+            <h3 class="product-type-title">Speakers</h3>
+            <button class="product-type-shop-button">
+              <a href="/speakers.html"> Shop</a>
+
+              <img src="./public/shared/desktop/icon-arrow-right.svg" alt="" />
+            </button>
+          </div>
+
+          <div class="product-type-sub-boxes">
+            <img
+              class="product-type-img"
+              src="./public/shared/desktop/image-category-thumbnail-earphones.png"
+              alt=""
+            />
+            <h3 class="product-type-title">Earphones</h3>
+            <button class="product-type-shop-button">
+              <a href="/earphones.html"> Shop</a>
+
+              <img src="./public/shared/desktop/icon-arrow-right.svg" alt="" />
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div id="cartModal" class="cart-modal">
+      <div class="cart-header">
+        <h2>Cart (<span id="cart-count">0</span>)</h2>
+        <button id="removeAllBtn">Remove all</button>
+      </div>
+      <div id="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total</span>
+          <span id="cart-total-price">$0</span>
+        </div>
+        <button id="checkoutBtn">Checkout</button>
+      </div>
+    </div>
+
+
+
+    <section class="content container section">
+
+<div id="product-container">
+
+
+</div>
+
+
+    </section>
+    
+    
+
+    <section class="product-types content container section">
+      <div class="product-type-box-main">
+        <div class="product-type-sub-boxes">
+          <img
+            class="product-type-img"
+            src="./public/shared/desktop/image-category-thumbnail-headphones.png"
+            alt=""
+          />
+          <h3 class="product-type-title">Headphones</h3>
+          <button class="product-type-shop-button">
+            <a href="/headphones.html"> Shop</a>
+
+            <img src="./public/shared/desktop/icon-arrow-right.svg" alt="" />
+          </button>
+        </div>
+
+        <div class="product-type-sub-boxes">
+          <img
+            class="product-type-img"
+            src="./public/shared/desktop/image-category-thumbnail-speakers.png"
+            alt=""
+          />
+          <h3 class="product-type-title">Speakers</h3>
+          <button class="product-type-shop-button">
+            <a href="/speakers.html"> Shop</a>
+
+            <img src="./public/shared/desktop/icon-arrow-right.svg" alt="" />
+          </button>
+        </div>
+
+        <div class="product-type-sub-boxes">
+          <img
+            class="product-type-img"
+            src="./public/shared/desktop/image-category-thumbnail-earphones.png"
+            alt=""
+          />
+          <h3 class="product-type-title">Earphones</h3>
+          <button class="product-type-shop-button">
+            <a href="/earphones.html"> Shop</a>
+
+            <img src="./public/shared/desktop/icon-arrow-right.svg" alt="" />
+          </button>
+        </div>
+      </div>
+    </section>
+    
+    <section class="about-section content container">
+      <img
+        class="about-section-img"
+        src="./public/shared/mobile/image-best-gear.jpg"
+        alt=""
+      />
+      <img
+        class="about-section-img-tablet"
+        src="./public/shared/tablet/image-best-gear.jpg"
+        alt=""
+      />
+      <img
+        class="about-section-img-desktop"
+        src="./public/shared/desktop/image-best-gear.jpg"
+        alt=""
+      />
+      <div class="about-section-text-content">
+        <h1 class="about-section-title">
+          Bringing you the <a>best</a> audio gear
+        </h1>
+        <p class="about-section-paragraph">
+          Located at the heart of New York City, Audiophile is the premier
+          store for high end headphones, earphones, speakers, and audio
+          accessories. We have a large showroom and luxury demonstration rooms
+          available for you to browse and experience a wide range of our
+          products. Stop by our store to meet some of the fantastic people who
+          make Audiophile the best place to buy your portable audio equipment.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer content container">
+    <div class="footer-img-nav-box">
+      <img class="footer-logo" src="/public/shared/desktop/logo.svg" alt="" />
+      <nav class="footer-navigation">
+        <ul class="footer-navigation-box">
+          <li class="footer-nav-text">Home</li>
+          <li class="footer-nav-text">Headphones</li>
+          <li class="footer-nav-text">Speakers</li>
+          <li class="footer-nav-text">Earphones</li>
+        </ul>
+      </nav>
+    </div>
+    <p class="footer-paragraph">
+      Audiophile is an all in one stop to fulfill your audio needs. We're a
+      small team of music lovers and sound specialists who are devoted to
+      helping you get the most out of personal audio. Come and visit our demo
+      facility - we’re open 7 days a week.
+    </p>
+
+    <div class="footer-copy-social-box">
+      <div>
+        <p class="footer-copyright">Copyright 2021. All Rights Reserved</p>
+      </div>
+      <div class="footer-socials-box">
+        <img src="/public/shared/desktop/icon-facebook.svg" alt="" />
+        <img src="/public/shared/desktop/icon-twitter.svg" alt="" />
+        <img src="/public/shared/desktop/icon-instagram.svg" alt="" />
+      </div>
+    </div>
+  </footer>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

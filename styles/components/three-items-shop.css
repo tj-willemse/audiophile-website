@@ -1,0 +1,105 @@
+/* Product Types Section Start */
+
+.product-type-box-main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.product-type-sub-boxes {
+  position: relative;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--clr-light-gray-two);
+  padding: 40px;
+  cursor: pointer;
+}
+.product-type-img {
+  width: 150px;
+  object-fit: contain;
+  position: absolute;
+  top: -30%;
+  transition: top 0.3s ease;
+}
+
+.product-type-sub-boxes:hover .product-type-img {
+  top: -40%;
+}
+
+.product-type-shop-button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-transform: uppercase;
+
+  font-weight: 800;
+}
+.product-type-shop-button a {
+  color: var(--clr-light-gray);
+  text-decoration: none;
+}
+.product-type-shop-button a:hover {
+  color: var(--clr-dark-human);
+}
+.product-type-title {
+  padding-top: 50px;
+  text-transform: uppercase;
+}
+
+/* xs */
+/* @media (min-width: 475px) {
+} */
+
+/* Sm */
+@media (min-width: 640px) {
+  /* prodcut type section */
+
+  .product-type-box-main {
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .product-types-two-sub-box-two {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .product-types-two-sub-box-two-content {
+    width: 300px;
+  }
+  .yx1-home-img {
+    width: 300px;
+  }
+}
+
+/* md */
+@media (min-width: 768px) {
+  /* prodcut type section */
+
+  .product-type-sub-boxes {
+    width: 250px;
+  }
+}
+
+/* Lg */
+@media (min-width: 1024px) {
+  /* prodcut type section */
+
+  .product-type-box-main {
+    padding: 60px;
+    gap: 1rem;
+  }
+  .product-type-sub-boxes {
+    width: 100%;
+  }
+}
+
+/* xL */
+/* @media (min-width: 1280px) {
+} */
+
+/* 2xL */
+/* @media (min-width: 1536px) {
+} */
