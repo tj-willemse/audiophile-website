@@ -1,0 +1,71 @@
+.checkout-section-main {
+  padding: 20px;
+}
+
+.checkout-main-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: var(--clr-very-light-gray);
+}
+.checkout-sub-box {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.e-money-main-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-title {
+  font-size: var(--size-3xl);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.checkout-main-titles {
+  text-transform: uppercase;
+  color: var(--clr-dark-human);
+  font-size: var(--size-base);
+  letter-spacing: 1px;
+}
+
+.checkout-sub-titles {
+  font-size: var(--size-sm);
+  font-weight: 600;
+}
+.checkout-inputs {
+  padding: 10px;
+  border: 1px solid var(--clr-light-gray);
+  border-radius: 10px;
+  width: 100%;
+}
+.payment-inputs {
+  padding: 10px;
+  border: 1px;
+  border-radius: 10px;
+}
+
+.cash-on-delivery-main-box {
+  display: none;
+}
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* Sm */
+/*@media (min-width: 640px) {} */
+
+/* md */
+/* @media (min-width: 768px) {}  */
+
+/* Lg */
+/* @media (min-width: 1024px) {} */
+
+/* xL */
+/* @media (min-width: 1280px) {}  */
+
+/* 2xL */
+/* @media (min-width: 1536px) {} */

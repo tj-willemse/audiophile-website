@@ -9,6 +9,7 @@ import '../styles/components/headphones.css';
 import '../styles/components/products.css';
 import '../styles/components/mobile-nav.css';
 import '../styles/components/cart-modal.css';
+import '../styles/components/checkout.css';
 import '../styles/util.css';
 
 // get elements
@@ -328,6 +329,8 @@ function clearCart() {
 }
 
 // event listeners
+
+// Menu toggle button
 menuToggle.addEventListener('change', function () {
   if (this.checked) {
     mobileView.style.display = 'block';
@@ -344,5 +347,6 @@ menuToggle.addEventListener('change', function () {
   }
 });
 
+// cart toggle buttons
 cartIcon.addEventListener('click', displayCart);
 removeCartItem.addEventListener('click', clearCart);

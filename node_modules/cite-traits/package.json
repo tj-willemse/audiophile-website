@@ -1,0 +1,11 @@
+{
+  "name": "cite-traits",
+  "version": "0.1.0",
+  "description": "a schema of traits used in referencing",
+  "author": "Nick Jackson <contact@nickjjackson.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/citeac/cite-traits.git"
+  }
+}
