@@ -140,7 +140,7 @@
       </div>
     </div>
 
-    <section class="checkout-section-main container section">
+    <section class="checkout-section-main container">
       <div class="checkout-main-box">
         <h1 class="checkout-title">Checkout</h1>
 
@@ -153,7 +153,7 @@
                 class="checkout-inputs"
                 type="text"
                 name=""
-                id=""
+                id="name-input"
                 placeholder=""
               />
             </div>
@@ -163,7 +163,7 @@
                 class="checkout-inputs"
                 type="text"
                 name=""
-                id=""
+                id="email-input"
                 placeholder=""
               />
             </div>
@@ -173,7 +173,7 @@
             class="checkout-inputs"
             type="text"
             name=""
-            id=""
+            id="phone-number-input"
             placeholder=""
           />
         </div>
@@ -186,8 +186,8 @@
             class="checkout-inputs"
             type="text"
             name=""
-            id=""
-            placeholder="12 kompanjie,GA "
+            id="address-input"
+            placeholder=" "
           />
           <div class="checkout-sub-box">
             <div>
@@ -196,8 +196,8 @@
                 class="checkout-inputs"
                 type="text"
                 name=""
-                id=""
-                placeholder=" 1739 "
+                id="zip-code-input"
+                placeholder=" "
               />
             </div>
             <div>
@@ -206,8 +206,8 @@
                 class="checkout-inputs"
                 type="text"
                 name=""
-                id=""
-                placeholder="Krugersdorp"
+                id="city-input"
+                placeholder=""
               />
             </div>
           </div>
@@ -216,8 +216,8 @@
             class="checkout-inputs"
             type="text"
             name=""
-            id=""
-            placeholder="South Africa "
+            id="country-input"
+            placeholder=" "
           />
         </div>
 
@@ -226,58 +226,62 @@
 
           <div class="payment-sub-box">
             <h4 class="checkout-sub-titles">Payment method</h4>
-            <div>
-              <form>
-                <label>
-                  <input
-                    class="payment-inputs"
-                    type="radio"
-                    name="payment"
-                    value="e-Money"
-                  />
-                  e-Money
-                </label>
-                <label>
-                  <input
-                    class="payment-inputs"
-                    type="radio"
-                    name="payment"
-                    value="Cash on Delivery"
-                  />
-                  Cash on Delivery
-                </label>
-              </form>
-            </div>
+
+            <form class="radio-box">
+              <label class="radio-payment">
+                <input
+                  id="e-money-radio"
+                  type="radio"
+                  name="payment"
+                  value="e-Money"
+                />
+                e-Money
+              </label>
+              <label class="radio-payment">
+                <input
+                  id="cash-on-radio"
+                  type="radio"
+                  name="payment"
+                  value="Cash
+                on Delivery"
+                />
+                Cash on Delivery
+              </label>
+            </form>
           </div>
 
           <div class="e-money-main-box">
             <div>
-              <h4>e-Money number</h4>
+              <h4 class="checkout-sub-titles">e-Money number</h4>
               <input
                 class="checkout-inputs"
                 type="text"
                 name=""
-                id=""
-                placeholder="23456789"
+                id="e-money-number"
+                placeholder=""
               />
             </div>
 
             <div>
-              <h4>e-money PIN</h4>
+              <h4 class="checkout-sub-titles">e-money PIN</h4>
               <input
                 class="checkout-inputs"
                 type="text"
                 name=""
-                id=""
-                placeholder="1234"
+                id="e-money-pin"
+                placeholder=""
               />
             </div>
           </div>
 
           <div class="cash-on-delivery-main-box">
-            <img src="./public/checkout/icon-cash-on-delivery.svg" alt="" />
-            <p>
-              The ‘Cash on Delivery’ option enables you to pay in cash when our
+            <img
+              class="cash-on-img"
+              src="./public/checkout/icon-cash-on-delivery.svg"
+              alt=""
+            />
+            <p class="cash-on-delivery-text">
+              The Cash on Delivery’ option enables you to pay in cash when our
               delivery courier arrives at your residence. Just make sure your
               address is correct so that your order will not be cancelled.
             </p>
@@ -287,14 +291,69 @@
 
       <div class="summary-main-box">
         <h1 class="summary-title">Summary</h1>
-        XX99 MK II x1 $2,999 XX59 x2 $899 YX1 x1 $599 Total $5,396 Shipping $10
-        VAT $120 Grand total $5,526 Continue & pay
+
+        <div id="summary-items"></div>
+
+        <div class="summary-totals-box-1">
+          <div class="summary-sub-boxes">
+            <span class="summary-text">Total</span>
+            <span class="summary-totals-text" id="summary-total-price">$0</span>
+          </div>
+
+          <div class="summary-sub-boxes">
+            <span class="summary-text">Shipping</span>
+            <span class="summary-totals-text" id="summary-shipping-price"
+              >$50</span
+            >
+          </div>
+
+          <div class="summary-sub-boxes">
+            <span class="summary-text">VAT (INCLUDED)</span>
+            <span class="summary-totals-text" id="summary-vat">$0</span>
+          </div>
+        </div>
+
+        <div class="summary-sub-boxes">
+          <span class="summary-text">Grand Total</span>
+          <span class="summary-totals-text" id="summary-grand-total">$0</span>
+        </div>
+
+        <div class="summary-button-box">
+          <button class="summary-button" id="summaryBtn">Continue</button>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <!-- Success Modal -->
+      <div class="success-modal-main-box">
+        <div class="success-modal-sub-box">
+          <img
+            class="success-img"
+            src="./public/checkout/icon-order-confirmation.svg"
+            alt=""
+          />
+          <div>
+            <h1>Thank you for your order</h1>
+            <p>You will receive an email confirmation shortly.</p>
+          </div>
+
+          <div class="success-items-grand-box">
+            <div id="success-order-items"></div>
+            <div class="success-grand-total-box">
+              <span class="summary-text">Grand Total</span>
+              <span class="summary-totals-text" id="modal-grand-total">$0</span>
+            </div>
+          </div>
+
+          <a href="index.html">
+            <button id="back-home-button" class="success-button">
+              Back to home
+            </button>
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- Success Modal -->
-    <!-- Thank you for your order You will receive an email confirmation shortly.
-    XX99 MK II x 1 $2,999 and 2 other item(s) Grand total $5,526 Back to home -->
     <!-- End success modal -->
 
     <footer class="footer content container">

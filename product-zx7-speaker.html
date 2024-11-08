@@ -115,18 +115,24 @@
         </div>
       </nav>
     </header>
-    <div id="cartModal" class="cart-modal">
-      <div class="cart-header">
-        <h2>Cart (<span id="cart-count">0</span>)</h2>
-        <button id="removeAllBtn">Remove all</button>
-      </div>
-      <div id="cart-items"></div>
-      <div class="cart-footer">
-        <div class="cart-total">
-          <span>Total</span>
-          <span id="cart-total-price">$0</span>
+    <div class="cart-main-modal-box">
+      <div id="cartModal" class="cart-modal">
+        <div class="cart-header">
+          <h2>Cart (<span id="cart-count">0</span>)</h2>
+          <button id="removeAllBtn">Remove all</button>
         </div>
-        <button id="checkoutBtn">Checkout</button>
+        <div id="cart-items"></div>
+        <div class="cart-footer">
+          <div class="cart-total">
+            <span>Total</span>
+            <span id="cart-total-price">$0</span>
+          </div>
+        </div>
+        <div class="cart-button-box">
+          <a href="./checkout.html">
+            <button class="button-cart" id="checkoutBtn">Checkout</button>
+          </a>
+        </div>
       </div>
     </div>
 

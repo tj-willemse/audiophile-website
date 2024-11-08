@@ -2,12 +2,12 @@
   display: none;
   width: 100%;
   background-color: var(--clr-white);
-  padding: 16px;
+  padding: 1rem;
   border-radius: 10px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   position: absolute;
   top: 20%;
-  z-index: --1;
+  z-index: 1;
 }
 .cart-main-modal-box {
   position: relative;
@@ -94,6 +94,8 @@
 }
 .cart-price {
   font-size: var(--size-xs);
+  color: var(--clr-light-gray);
+  font-weight: bold;
 }
 
 /* xs */
@@ -108,12 +110,16 @@
 }
 
 /* md */
-/* @media (min-width: 768px) {}  */
+/* @media (min-width: 768px) {
+} */
 
 /* Lg */
-/* @media (min-width: 1024px) {
-  
-} */
+@media (min-width: 1024px) {
+  .cart-modal {
+    width: 40%;
+    left: 55%;
+  }
+}
 
 /* xL */
 @media (min-width: 1280px) {
@@ -127,5 +133,6 @@
 @media (min-width: 1536px) {
   .cart-modal {
     width: 20%;
+    left: 70.1%;
   }
 }

@@ -12,6 +12,14 @@
     "vite": "^5.4.10"
   },
   "dependencies": {
-    "cite": "^0.4.0"
-  }
+    "cite": "^0.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "nodemailer": "^6.9.16"
+  },
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

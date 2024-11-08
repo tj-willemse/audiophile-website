@@ -18,46 +18,214 @@ const mobileView = document.querySelector('.mobile-menu-overlay');
 const cartIcon = document.getElementById('cart-icon');
 const cartModal = document.querySelector('.cart-modal');
 const cartItemsContainer = document.getElementById('cart-items');
+const checkoutSummaryContainer = document.getElementById('summary-items');
 const cartCount = document.getElementById('cart-count');
 const cartTotalPrice = document.getElementById('cart-total-price');
+const summaryTotalPrice = document.getElementById('summary-total-price');
 const removeCartItem = document.getElementById('removeAllBtn');
+const vatNumber = document.getElementById('summary-vat');
+const grandNumber = document.getElementById('summary-grand-total');
+const eMoneyBox = document.querySelector('.e-money-main-box');
+const eRadio = document.getElementById('e-money-radio');
+const cashRadio = document.getElementById('cash-on-radio');
+const cashBox = document.querySelector('.cash-on-delivery-main-box');
+
+const checkoutButton = document.getElementById('summaryBtn');
+
+const nameInput = document.getElementById('name-input');
+const emailInput = document.getElementById('email-input');
+const phoneNumberInput = document.getElementById('phone-number-input');
+const addressInput = document.getElementById('address-input');
+const zipCodeInput = document.getElementById('zip-code-input');
+const cityInput = document.getElementById('city-input');
+const countryInput = document.getElementById('country-input');
+
+const successModal = document.querySelector('.success-modal-main-box');
+const checkoutSectionMain = document.querySelector('.checkout-section-main');
+const successOrderItems = document.getElementById('success-order-items');
+const modalGrandTotal = document.getElementById('modal-grand-total');
+const backHomeButton = document.getElementById('back-home-button');
 
 // create elements
 let cart = [];
+const shippingCost = 50;
 
 // functions
+
+function updateSuccessModal() {
+  successOrderItems.innerHTML = ''; // Clear any previous content
+
+  let totalPrice = 0;
+
+  const grandTotalValue = grandNumber.textContent;
+  modalGrandTotal.textContent = grandTotalValue;
+  // Loop through the cart and update the modal content
+  cart.forEach((item) => {
+    const itemTotal = item.price * item.quantity;
+    totalPrice += itemTotal;
+
+    // Create the item display similar to the checkout summary
+    const summaryItemDiv = createItemElement(item, itemTotal);
+    successOrderItems.appendChild(summaryItemDiv);
+  });
+}
+
+function createItemElement(item, itemTotal) {
+  const summaryItemDiv = document.createElement('div');
+  summaryItemDiv.classList.add('summary-items');
+
+  summaryItemDiv.innerHTML = `
+   
+    <div class="main-summary-box">
+      <div class="summary-img-title-box">
+        <img class="success-img-items" src="${item.image}" alt="${item.name}" />
+        <div class="summary-title-img-price">
+          <span class="cart-title">${item.name
+            .replace(/(Headphones|Speakers|Earphones)/, ' ')
+            .trim()}</span>
+          <span class="cart-price">$${Math.round(itemTotal)}</span>
+        </div>
+      </div>
+      <span class="summary-quantity-display">x ${item.quantity}</span>
+    </div>
+     
+  `;
+
+  return summaryItemDiv;
+}
+
+// function validations
+
+function validateForms() {
+  let isValid = true;
+
+  function validateField(inputElement, regex, fieldName, errorMessage) {
+    if (!regex.test(inputElement.value.trim())) {
+      isValid = false;
+      inputElement.style.border = '1px solid red';
+      console.log(`${fieldName} is not valid. ${errorMessage}`);
+    } else {
+      isValid = true;
+      inputElement.style.border = '1px solid green';
+      console.log(`${fieldName} is valid`);
+    }
+  }
+
+  validateField(
+    phoneNumberInput,
+    /^\d{10}$/,
+    'Phone number',
+    'Must be exactly 10 digits and contain only numbers.'
+  );
+
+  validateField(
+    emailInput,
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    'Email',
+    'Must be a valid email format.'
+  );
+
+  validateField(
+    zipCodeInput,
+    /^\d{4,5}(?:[-\s]?\d{4})?$/,
+    'Zip code',
+    'Must be 4 or 5 digits, optionally followed by a 4-digit extension.'
+  );
+
+  function validateInput(inputElement, fieldName) {
+    if (inputElement.value.trim() === '') {
+      isValid = false;
+      inputElement.style.border = '1px solid red';
+      console.log(`${fieldName} cannot be empty`);
+    } else {
+      inputElement.style.border = '1px solid green';
+      console.log(`${fieldName} is valid`);
+    }
+  }
+
+  validateInput(addressInput, 'Address');
+  validateInput(cityInput, 'City');
+  validateInput(countryInput, 'Country');
+  validateInput(nameInput, 'Name');
+
+  if (isValid) {
+    successModalActive();
+  }
+}
+
+function successModalActive() {
+  successModal.style.display = 'block';
+  checkoutSectionMain.style.display = 'none';
+
+  // email content section
+  const userEmail = emailInput.value;
+  const orderDetails = 'Order details can be here...';
+
+  // Send confirmation email request to the serverless function
+  fetch('/api/send-confirmation', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ userEmail, orderDetails }),
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log('Confirmation email sent successfully');
+      } else {
+        console.error('Error sending confirmation email');
+      }
+    })
+    .catch((error) => console.error('Error:', error));
+
+  updateSuccessModal(); // Ensure this function is defined elsewhere in your project
+}
+
+function radioExsist() {
+  if (eRadio && cashRadio && eMoneyBox && cashBox) {
+    eRadio.addEventListener('change', togglePaymentFields);
+    cashRadio.addEventListener('change', togglePaymentFields);
+
+    togglePaymentFields();
+  }
+}
+
+function togglePaymentFields() {
+  cashBox.style.display = cashRadio.checked ? 'flex' : 'none';
+  eMoneyBox.style.display = eRadio.checked ? 'flex' : 'none';
+}
+
+document.addEventListener('DOMContentLoaded', radioExsist);
 
 function loadCart() {
   const savedCart = localStorage.getItem('cart');
   if (savedCart) {
     cart = JSON.parse(savedCart);
-    updateCartDisplay(); // Update the display with the loaded cart
+    updateCartDisplay();
   }
 }
 document.addEventListener('DOMContentLoaded', () => {
-  loadCart(); // Load the cart from localStorage
-  displayProductBySlug(); // Display the product based on the slug
+  loadCart();
+  displayProductBySlug();
 });
 
 function saveCart() {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Function to update quantity on the product page
 window.changeProductQuantity = function (amount) {
   const quantityElement = document.getElementById('quantity');
   let currentQuantity = parseInt(quantityElement.textContent);
-  currentQuantity = Math.max(1, currentQuantity + amount); // Ensure quantity doesn't drop below 1
+  currentQuantity = Math.max(1, currentQuantity + amount);
   quantityElement.textContent = currentQuantity;
 };
 
-// Function to update quantity within the cart
 window.changeCartQuantity = function (slug, amount) {
   const cartItem = cart.find((item) => item.slug === slug);
   if (cartItem) {
-    cartItem.quantity = Math.max(1, cartItem.quantity + amount); // Ensure quantity doesn't drop below 1
+    cartItem.quantity = Math.max(1, cartItem.quantity + amount);
     saveCart();
-    updateCartDisplay(); // Update the display after changing quantity
+    updateCartDisplay();
   }
 };
 
@@ -75,7 +243,6 @@ function addToCart(slug, quantity) {
           image: product.image.mobile,
         };
 
-        // Check if item already exists in the cart
         const existingItem = cart.find((item) => item.slug === slug);
         if (existingItem) {
           existingItem.quantity += quantity;
@@ -89,8 +256,12 @@ function addToCart(slug, quantity) {
     .catch((error) => console.error('Error fetching the JSON:', error));
 }
 
+function calculateTotalPrice() {
+  return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+}
+
 function updateCartDisplay() {
-  cartItemsContainer.innerHTML = ''; // Clear the cart display
+  cartItemsContainer.innerHTML = '';
   let totalPrice = 0;
 
   cart.forEach((item) => {
@@ -106,7 +277,7 @@ function updateCartDisplay() {
           <span class="cart-title">${item.name
             .replace(/(Headphones|Speakers|Earphones)/, ' ')
             .trim()}</span>
-          <span class="cart-price">$${itemTotal.toFixed(2)}</span>
+         <span class="cart-price">$${Math.round(itemTotal)}</span>
         </div>
         <div class="product-quantity-button-box-cart">
           <div class="quantity-counter">
@@ -125,10 +296,65 @@ function updateCartDisplay() {
   });
 
   cartCount.textContent = cart.length;
-  cartTotalPrice.textContent = `$${totalPrice.toFixed(2)}`;
+  cartTotalPrice.textContent = `$${calculateTotalPrice().toFixed(2)}`;
+  updateSummaryDisplay();
 }
 
-// Function to fetch and display the product based on the slug
+function updateSummaryDisplay() {
+  if (!checkoutSummaryContainer) {
+    return;
+  }
+
+  checkoutSummaryContainer.innerHTML = ''; // Clear summary display
+  let totalPrice = 0;
+
+  cart.forEach((item) => {
+    const itemTotal = item.price * item.quantity;
+    totalPrice += itemTotal;
+
+    const summaryItemDiv = document.createElement('div');
+    summaryItemDiv.classList.add('summary-items');
+    summaryItemDiv.innerHTML = `
+      <div class="main-summary-box">
+        <div class="summary-img-title-box">
+          <img class="cart-img" src="${item.image}" alt="${item.name}" />
+          <div class="summary-title-img-price">
+            <span class="cart-title">${item.name
+              .replace(/(Headphones|Speakers|Earphones)/, ' ')
+              .trim()}</span>
+            <span class="cart-price">$${Math.round(itemTotal)}</span>
+          </div>
+        </div>
+        <span class="summary-quantity-display">x ${item.quantity}</span>
+      </div>
+    `;
+    checkoutSummaryContainer.appendChild(summaryItemDiv);
+  });
+
+  if (summaryTotalPrice) {
+    summaryTotalPrice.textContent = `$${Math.round(calculateTotalPrice())}`;
+  }
+
+  const totalVat = calculateTotalVat(totalPrice);
+  if (vatNumber) {
+    vatNumber.textContent = `$${Math.round(totalVat)}`;
+  }
+
+  updateGrandNumber(totalPrice);
+}
+
+function updateGrandNumber(total) {
+  grandNumber.textContent = calculateGrandTotal(total);
+}
+
+function calculateGrandTotal(total) {
+  return `$${total + shippingCost}`;
+}
+
+function calculateTotalVat(total) {
+  return (total * 20) / 100;
+}
+
 function displayProductBySlug() {
   const currentPage = window.location.pathname;
   const slug = currentPage.split('/').pop().replace('.html', '');
@@ -139,8 +365,6 @@ function displayProductBySlug() {
       const product = data.find((item) => item.slug === slug);
       if (product) {
         displayProduct(product);
-      } else {
-        console.error('Product not found for slug:', slug);
       }
     })
     .catch((error) => console.error('Error fetching the JSON:', error));
@@ -149,13 +373,10 @@ document.addEventListener('DOMContentLoaded', () => {
   displayProductBySlug();
 });
 
-// Function to display the product and related products
 function displayProduct(product) {
   const container = document.getElementById('product-container');
-  container.innerHTML = ''; // Clear any existing content
-
-  const productDiv = document.createElement('div'); // Create a new div for the product
-
+  container.innerHTML = '';
+  const productDiv = document.createElement('div');
   productDiv.innerHTML = `
     <div class="product-main-box">
         <div class="product-image">
@@ -244,16 +465,15 @@ function displayProduct(product) {
     </div>
   `;
 
-  // Add the "Add to Cart" button programmatically
   const addToCartButton = document.createElement('button');
   addToCartButton.classList.add('button1');
   addToCartButton.textContent = 'Add to cart';
 
-  // Get quantity from the span with id 'quantity'
   addToCartButton.addEventListener('click', () => {
     const quantityElement = productDiv.querySelector('#quantity');
     const selectedQuantity = parseInt(quantityElement.textContent); // Parse the current quantity
     addToCart(product.slug, selectedQuantity);
+    displayCart();
   });
 
   productDiv
@@ -290,20 +510,15 @@ function displayOthers(others) {
     otherDiv.classList.add('other-box');
 
     otherDiv.innerHTML = `
- 
     <div class="other-main-box">
-
-  
       <div class="other-image">
           <img src="${other.image.mobile}" alt="${other.name}" class="responsive-img xs">
           <img src="${other.image.tablet}" alt="${other.name}" class="responsive-img md hidden">
           <img src="${other.image.desktop}" alt="${other.name}" class="responsive-img lg hidden">
       </div>
-
       <div class="other-title">
           <h2 class="other-title-text">${other.name}</h2>
       </div>
-
       <a href ="/product-${other.slug}.html">
       <button class="button1" >See product</button>
       </a>
@@ -326,6 +541,7 @@ function clearCart() {
   cart = [];
   saveCart();
   updateCartDisplay();
+  displayCart();
 }
 
 // event listeners
@@ -350,3 +566,13 @@ menuToggle.addEventListener('change', function () {
 // cart toggle buttons
 cartIcon.addEventListener('click', displayCart);
 removeCartItem.addEventListener('click', clearCart);
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (checkoutButton) {
+    checkoutButton.addEventListener('click', validateForms);
+  }
+
+  if (backHomeButton) {
+    backHomeButton.addEventListener('click', clearCart);
+  }
+});
