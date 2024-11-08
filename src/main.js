@@ -29,9 +29,7 @@ const eMoneyBox = document.querySelector('.e-money-main-box');
 const eRadio = document.getElementById('e-money-radio');
 const cashRadio = document.getElementById('cash-on-radio');
 const cashBox = document.querySelector('.cash-on-delivery-main-box');
-
 const checkoutButton = document.getElementById('summaryBtn');
-
 const nameInput = document.getElementById('name-input');
 const emailInput = document.getElementById('email-input');
 const phoneNumberInput = document.getElementById('phone-number-input');
@@ -39,7 +37,6 @@ const addressInput = document.getElementById('address-input');
 const zipCodeInput = document.getElementById('zip-code-input');
 const cityInput = document.getElementById('city-input');
 const countryInput = document.getElementById('country-input');
-
 const successModal = document.querySelector('.success-modal-main-box');
 const checkoutSectionMain = document.querySelector('.checkout-section-main');
 const successOrderItems = document.getElementById('success-order-items');
@@ -53,18 +50,13 @@ const shippingCost = 50;
 // functions
 
 function updateSuccessModal() {
-  successOrderItems.innerHTML = ''; // Clear any previous content
-
+  successOrderItems.innerHTML = '';
   let totalPrice = 0;
-
   const grandTotalValue = grandNumber.textContent;
   modalGrandTotal.textContent = grandTotalValue;
-  // Loop through the cart and update the modal content
   cart.forEach((item) => {
     const itemTotal = item.price * item.quantity;
     totalPrice += itemTotal;
-
-    // Create the item display similar to the checkout summary
     const summaryItemDiv = createItemElement(item, itemTotal);
     successOrderItems.appendChild(summaryItemDiv);
   });
@@ -73,9 +65,7 @@ function updateSuccessModal() {
 function createItemElement(item, itemTotal) {
   const summaryItemDiv = document.createElement('div');
   summaryItemDiv.classList.add('summary-items');
-
   summaryItemDiv.innerHTML = `
-   
     <div class="main-summary-box">
       <div class="summary-img-title-box">
         <img class="success-img-items" src="${item.image}" alt="${item.name}" />
@@ -90,11 +80,8 @@ function createItemElement(item, itemTotal) {
     </div>
      
   `;
-
   return summaryItemDiv;
 }
-
-// function validations
 
 function validateForms() {
   let isValid = true;
@@ -110,21 +97,18 @@ function validateForms() {
       console.log(`${fieldName} is valid`);
     }
   }
-
   validateField(
     phoneNumberInput,
     /^\d{10}$/,
     'Phone number',
     'Must be exactly 10 digits and contain only numbers.'
   );
-
   validateField(
     emailInput,
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     'Email',
     'Must be a valid email format.'
   );
-
   validateField(
     zipCodeInput,
     /^\d{4,5}(?:[-\s]?\d{4})?$/,
@@ -142,7 +126,6 @@ function validateForms() {
       console.log(`${fieldName} is valid`);
     }
   }
-
   validateInput(addressInput, 'Address');
   validateInput(cityInput, 'City');
   validateInput(countryInput, 'Country');
@@ -159,9 +142,8 @@ function successModalActive() {
 
   // email content section
   const userEmail = emailInput.value;
-  const orderDetails = 'Order details can be here...';
+  const orderDetails = 'Happy Shopping :)';
 
-  // Send confirmation email request to the serverless function
   fetch('/api/send-confirmation', {
     method: 'POST',
     headers: {
@@ -178,7 +160,7 @@ function successModalActive() {
     })
     .catch((error) => console.error('Error:', error));
 
-  updateSuccessModal(); // Ensure this function is defined elsewhere in your project
+  updateSuccessModal();
 }
 
 function radioExsist() {
@@ -305,7 +287,7 @@ function updateSummaryDisplay() {
     return;
   }
 
-  checkoutSummaryContainer.innerHTML = ''; // Clear summary display
+  checkoutSummaryContainer.innerHTML = '';
   let totalPrice = 0;
 
   cart.forEach((item) => {
@@ -480,14 +462,13 @@ function displayProduct(product) {
     .querySelector('.product-quantity-button-box')
     .appendChild(addToCartButton);
 
-  container.appendChild(productDiv); // Append the entire productDiv
+  container.appendChild(productDiv);
 
   if (product.others && product.others.length > 0) {
     displayOthers(product.others);
   }
 }
 
-// Function to display related products
 function displayOthers(others) {
   const container = document.getElementById('product-container');
 
@@ -550,13 +531,13 @@ function clearCart() {
 menuToggle.addEventListener('change', function () {
   if (this.checked) {
     mobileView.style.display = 'block';
-    const otherContent = document.querySelectorAll('.content'); // Adjust the selector as needed
+    const otherContent = document.querySelectorAll('.content');
     otherContent.forEach((content) => {
       content.style.display = 'none';
     });
   } else {
     mobileView.style.display = 'none';
-    const otherContent = document.querySelectorAll('.content'); // Adjust the selector as needed
+    const otherContent = document.querySelectorAll('.content');
     otherContent.forEach((content) => {
       content.style.display = 'block';
     });
